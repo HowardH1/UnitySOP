@@ -1,0 +1,32 @@
+graph TD
+    Start --> P1_S1[Navigate to Unity.com downloads page];
+
+    P1_S1 --> P1_S2[Download and run Unity Hub];
+    P1_S2 --> P1_S3{Launch Unity Hub and sign in?};
+    P1_S3 -- Yes --> P1_S4[Navigate to "Installs" and select 6000.0.61f1 LTS];
+    P1_S3 -- No (Credential Errors) --> CE{Retry credentials?};
+    CE -- Yes --> P1_S3;
+    CE -- No --> Reset[Reset credentials through administrator];
+    Reset --> P1_S3;
+
+    P1_S4 --> P1_S5[Opt to install Visual Studio Community during customization];
+    P1_S5 --> P2_S1[Log in to GitHub.com using company credentials];
+
+    P2_S1 --> P2_S2[Locate shared project repository and click "Code"];
+    P2_S2 --> P2_S3[Download and install GitHub Desktop];
+    P2_S3 --> P2_S4[Sign in to GitHub Desktop];
+    P2_S4 --> P2_S5[Clone project repository to local folder];
+    P2_S5 --> P3_S1[Return to Unity and select "Add a project repository"];
+
+    P3_S1 --> P3_S2[Navigate to cloned folder];
+    P3_S2 --> P3_S3[Open project with 6000.0.61f1 LTS];
+    P3_S3 --> PE{Package/Dependency Errors on first launch?};
+    PE -- Yes --> R_PD[Cross-reference dependencies with docs/colleagues];
+    R_PD --> P4_S1;
+    PE -- No --> P4_S1;
+
+    P4_S1[Create a fork of the main branch on Github] --> P4_S2[In Github Desktop, point to new fork and clone it];
+    P4_S2 --> P4_S3[Reopen project and make minor, visible change];
+    P4_S3 --> P4_S4[Save project and return to Github Desktop to stage and commit];
+    P4_S4 --> P4_S5[Push changes to branch to confirm workflow];
+    P4_S5 --> End;
